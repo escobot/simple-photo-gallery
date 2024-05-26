@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pbgnz - adventure log</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            flex: 1;
+        }
+        .sidebar {
+            width: 20%;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            box-sizing: border-box;
+            transition: transform 0.3s ease;
+            overflow-y: auto;
+        }
+        .sidebar h1 {
+            font-size: 24px;
+            margin: 0 0 10px;
+        }
+        .sidebar p {
+            color: #777;
+            margin: 0 0 20px;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin: 20px 0 10px;
+        }
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar ul li {
+            margin: 0 0 10px;
+        }
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .content {
+            width: 80%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 20px;
+            gap: 10px;
+            background: #fff;
+            box-sizing: border-box;
+            overflow-y: auto;
+        }
+        .content a {
+            width: calc(33.33% - 10px);
+            height: auto;
+            overflow: hidden;
+        }
+        .content img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .content img:hover {
+            transform: scale(1.05);
+        }
+        .hamburger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            padding: 10px;
+            background: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 1001;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 200px;
+                transform: translateX(-200px);
+                z-index: 1000;
+            }
+            .sidebar.show {
+                transform: translateX(0);
+            }
+            .content {
+                width: 100%;
+            }
+            .content a {
+                width: calc(50% - 10px);
+            }
+            .hamburger {
+                display: block;
+            }
+        }
+        @media (max-width: 480px) {
+            .content a {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+    <div class="container">
+        <div class="sidebar" id="sidebar">
+            <h1>pbgnz</h1>
+            <p>Backup of <a href="https://imgur.com/user/pbgnz">imgur.com/user/pbgnz</a></p>
+            <h2>Adventure log</h2>
+            <ul>
+                <li><a onclick="showGallery('trip010')">Beauharnois Bikepacking '24</a></li>
+                <li><a onclick="showGallery('trip009')">Queretaro '24</a></li>
+                <li><a onclick="showGallery('trip008')">Osaka '23</a></li>
+                <li><a onclick="showGallery('trip007')">Kyoto '23</a></li>
+                <li><a onclick="showGallery('trip006')">Hong Kong '23</a></li>
+                <li><a onclick="showGallery('trip005')">Maui '23</a></li>
+                <li><a onclick="showGallery('trip004')">Prague '22</a></li>
+                <li><a onclick="showGallery('trip003')">Venice '22</a></li>
+                <li><a onclick="showGallery('trip002')">Yucatan '22</a></li>
+                <li><a onclick="showGallery('trip001')">Vancouver '21</a></li>
+                <li><a onclick="showGallery('trip000')">Toronto Islands '20</a></li>
+            </ul>
+        </div>
+        <div class="content">
+
+            <a href="img/2401/01.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="img/2401/01.jpg"></a>
+            <a href="img/2401/02.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="img/2401/02.jpg"></a>
+            <a href="img/2401/03.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="img/2401/03.jpg"></a>
+            <a href="img/2401/04.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="img/2401/04.jpg"></a>
+            <a href="img/2401/05.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="img/2401/05.jpg"></a>
+
+            <a href="img/2400/01.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/01.jpg"></a>
+            <a href="img/2400/02.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/02.jpg"></a>
+            <a href="img/2400/03.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/03.jpg"></a>
+            <a href="img/2400/04.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/04.jpg"></a>
+            <a href="img/2400/05.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/05.jpg"></a>
+            <a href="img/2400/06.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/06.jpg"></a>
+            <a href="img/2400/07.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/07.jpg"></a>
+            <a href="img/2400/08.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/08.jpg"></a>
+            <a href="img/2400/09.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/09.jpg"></a>
+            <a href="img/2400/10.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="img/2400/10.jpg"></a>
+
+            <a href="img/2304/01.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="img/2304/01.jpg"></a>
+            <a href="img/2304/02.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="img/2304/02.jpg"></a>
+            <a href="img/2304/03.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="img/2304/03.jpg"></a>
+            <a href="img/2304/04.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="img/2304/04.jpg"></a>
+            <a href="img/2304/05.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="img/2304/05.jpg"></a>
+
+            <a href="img/2303/01.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/01.jpg"></a>
+            <a href="img/2303/02.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/02.jpg"></a>
+            <a href="img/2303/03.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/03.jpg"></a>
+            <a href="img/2303/04.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/04.jpg"></a>
+            <a href="img/2303/05.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/05.jpg"></a>
+            <a href="img/2303/06.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/06.jpg"></a>
+            <a href="img/2303/07.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/07.jpg"></a>
+            <a href="img/2303/08.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/08.jpg"></a>
+            <a href="img/2303/09.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/09.jpg"></a>
+            <a href="img/2303/10.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="img/2303/10.jpg"></a>
+
+            <a href="img/2301/01.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/01.jpg"></a>
+            <a href="img/2301/02.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/02.jpg"></a>
+            <a href="img/2301/03.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/03.jpg"></a>
+            <a href="img/2301/04.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/04.jpg"></a>
+            <a href="img/2301/05.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/05.jpg"></a>
+            <a href="img/2301/06.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/06.jpg"></a>
+            <a href="img/2301/07.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/07.jpg"></a>
+            <a href="img/2301/08.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/08.jpg"></a>
+            <a href="img/2301/09.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/09.jpg"></a>
+            <a href="img/2301/10.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="img/2301/10.jpg"></a>
+
+            <a href="img/2300/01.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/01.jpg"></a>
+            <a href="img/2300/02.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/02.jpg"></a>
+            <a href="img/2300/03.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/03.jpg"></a>
+            <a href="img/2300/04.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/04.jpg"></a>
+            <a href="img/2300/05.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/05.jpg"></a>
+            <a href="img/2300/06.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/06.jpg"></a>
+            <a href="img/2300/07.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/07.jpg"></a>
+            <a href="img/2300/08.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/08.jpg"></a>
+            <a href="img/2300/09.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/09.jpg"></a>
+            <a href="img/2300/10.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="img/2300/10.jpg"></a>
+
+            <a href="img/2202/01.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/01.jpg"></a>
+            <a href="img/2202/02.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/02.jpg"></a>
+            <a href="img/2202/03.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/03.jpg"></a>
+            <a href="img/2202/04.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/04.jpg"></a>
+            <a href="img/2202/05.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/05.jpg"></a>
+            <a href="img/2202/06.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/06.jpg"></a>
+            <a href="img/2202/07.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/07.jpg"></a>
+            <a href="img/2202/08.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/08.jpg"></a>
+            <a href="img/2202/09.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/09.jpg"></a>
+            <a href="img/2202/10.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="img/2202/10.jpg"></a>
+
+            <a href="img/2201/01.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/01.jpg"></a>
+            <a href="img/2201/02.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/02.jpg"></a>
+            <a href="img/2201/03.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/03.jpg"></a>
+            <a href="img/2201/04.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/04.jpg"></a>
+            <a href="img/2201/05.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/05.jpg"></a>
+            <a href="img/2201/06.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/06.jpg"></a>
+            <a href="img/2201/07.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/07.jpg"></a>
+            <a href="img/2201/08.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/08.jpg"></a>
+            <a href="img/2201/09.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/09.jpg"></a>
+            <a href="img/2201/10.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="img/2201/10.jpg"></a>
+
+            <a href="img/2200/01.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="img/2200/01.jpg"></a>
+            <a href="img/2200/02.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="img/2200/02.jpg"></a>
+            <a href="img/2200/03.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="img/2200/03.jpg"></a>
+            <a href="img/2200/04.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="img/2200/04.jpg"></a>
+            <a href="img/2200/05.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="img/2200/05.jpg"></a>
+
+            <a href="img/2100/01.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/01.jpg"></a>
+            <a href="img/2100/02.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/02.jpg"></a>
+            <a href="img/2100/03.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/03.jpg"></a>
+            <a href="img/2100/04.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/04.jpg"></a>
+            <a href="img/2100/05.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/05.jpg"></a>
+            <a href="img/2100/06.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/06.jpg"></a>
+            <a href="img/2100/07.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/07.jpg"></a>
+            <a href="img/2100/08.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/08.jpg"></a>
+            <a href="img/2100/09.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/09.jpg"></a>
+            <a href="img/2100/10.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="img/2100/10.jpg"></a>
+
+            <a href="img/2000/01.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/01.jpg"></a>
+            <a href="img/2000/02.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/02.jpg"></a>
+            <a href="img/2000/03.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/03.jpg"></a>
+            <a href="img/2000/04.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/04.jpg"></a>
+            <a href="img/2000/05.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/05.jpg"></a>
+            <a href="img/2000/06.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/06.jpg"></a>
+            <a href="img/2000/07.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/07.jpg"></a>
+            <a href="img/2000/08.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/08.jpg"></a>
+            <a href="img/2000/09.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/09.jpg"></a>
+            <a href="img/2000/10.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="img/2000/10.jpg"></a>
+
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('[data-fancybox="gallery"]').fancybox({
+                // Options for Fancybox
+            });
+        });
+
+        function showGallery(gallery) {
+            $('.content a').hide();
+            $('.content a[data-gallery="' + gallery + '"]').show();
+            if (window.innerWidth <= 768) {
+                toggleSidebar();
+            }
+        }
+
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
