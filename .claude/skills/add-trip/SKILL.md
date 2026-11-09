@@ -1,6 +1,6 @@
 ---
 name: add-trip
-description: Publish new or updated photo folders from originals/ to the gallery website — normalize file names, generate img/ and thumbs/ with resize.sh, and add the trip to the `trips` list in index.html. Use when the user says they added photos or a trip folder, or asks to enable/publish/add a trip or album.
+description: Publish new or updated photo folders from originals/ to the gallery website — normalize file names, generate assets/img/ and assets/thumbs/ with scripts/resize.sh, and add the trip to the `albums` list in assets/site.js. Use when the user says they added photos or a trip folder, or asks to enable/publish/add a trip or album.
 ---
 
 # Add a trip to the gallery
@@ -8,10 +8,10 @@ description: Publish new or updated photo folders from originals/ to the gallery
 The site is a static `index.html`. Each trip is one folder name used in three places:
 
 - `originals/<id>/` — full-size photos, **not committed** (gitignored)
-- `img/<id>/` — 2400px lightbox copies, generated
-- `thumbs/<id>/` — 800px grid thumbnails, generated
+- `assets/img/<id>/` — 2400px lightbox copies, generated
+- `assets/thumbs/<id>/` — 800px grid thumbnails, generated
 
-and one line in the `trips` array in `index.html`:
+and one line in the `albums` array in `assets/site.js` (the page itself, `index.html`, is generic):
 
 ```js
 { id: '2024-panama', label: "Panama '24", count: 5 },
@@ -25,7 +25,7 @@ word-split unquoted variables, so `for x in $list` silently runs once.
 
 ## Steps
 
-1. **Find what's new.** Compare `ls originals` with the `id:` values in `index.html`.
+1. **Find what's new.** Compare `ls originals` with the `id:` values in `assets/site.js`.
    A folder whose file count differs from its `count` was extended and needs steps 3–5 too.
 
 2. **Check the folder name** is `<year>-<place>`: lowercase, hyphens, ASCII, no spaces
@@ -40,10 +40,10 @@ word-split unquoted variables, so `for x in $list` silently runs once.
      (sort numerically, so `2` comes before `10`). Use `001.jpg` only if a trip has >99.
    - Skip non-images such as `.DS_Store`.
 
-4. **Generate web copies:** `./resize.sh`. It only processes missing outputs, so if you
-   renumbered photos of an *existing* trip, first delete `img/<id>/` and `thumbs/<id>/`.
+4. **Generate web copies:** `scripts/resize.sh`. It only processes missing outputs, so if you
+   renumbered photos of an *existing* trip, first delete `assets/img/<id>/` and `assets/thumbs/<id>/`.
 
-5. **Add or update the `trips` entry.** Keep the list newest first. Label style is
+5. **Add or update the `albums` entry.** Keep the list newest first. Label style is
    `"<Place> '<yy>"` (e.g. `"New York '24"`); use the place's proper spelling and
    capitalization. When several trips share a year and their order is unknown, ask the
    user or say in the summary where you put them.
@@ -51,7 +51,7 @@ word-split unquoted variables, so `for x in $list` silently runs once.
 6. **Verify** every expected file exists:
    ```bash
    bash -c 'for id in <ids>; do n=<count>; for i in $(seq -f %02g 1 $n); do
-     for d in img thumbs; do [ -f "$d/$id/$i.jpg" ] || echo "MISSING $d/$id/$i.jpg"; done; done; done'
+     for d in assets/img assets/thumbs; do [ -f "$d/$id/$i.jpg" ] || echo "MISSING $d/$id/$i.jpg"; done; done; done'
    ```
    For a visual check, screenshot the trip with headless Chrome:
    ```bash
@@ -60,5 +60,5 @@ word-split unquoted variables, so `for x in $list` silently runs once.
      --screenshot=<scratchpad>/trip.png "file://$PWD/index.html#<id>"
    ```
 
-7. **Don't commit or push** unless asked. When committing, stage `img/`, `thumbs/` and
-   `index.html`; `originals/` stays untracked.
+7. **Don't commit or push** unless asked. When committing, stage `assets/` and
+   any `index.html` change; `originals/` stays untracked.

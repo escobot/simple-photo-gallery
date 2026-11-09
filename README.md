@@ -33,13 +33,23 @@ Open the `index.html` file in your web browser to view and use the photo gallery
 - Photos are displayed in a grid layout.
 - Click on a photo to view it in the carousel.
 
-### Organizing Photos
+### Making it your own
+`index.html` and `scripts/` are generic. Everything specific to a gallery lives in `assets/`:
+
+- `assets/site.js` — the page title, your name, tagline, sidebar heading and the list of albums
+- `assets/img/` — lightbox images (generated)
+- `assets/thumbs/` — grid thumbnails (generated)
+
+To start your own gallery, delete `assets/img/` and `assets/thumbs/`, edit `assets/site.js`
+(empty the `albums` list), and add your albums as below.
+
+### Adding an album
 Each album is a folder named `<year>-<place>` (e.g. `2024-queretaro`). To add one:
 
 1. Put the photos in `originals/<year>-<place>/`, named `01.jpg`, `02.jpg`, ...
    (`originals/` is not committed).
-2. Run `./resize.sh` (macOS) to generate the lightbox images in `img/` and the grid thumbnails in `thumbs/`.
-3. Add a line to the `trips` list in `index.html`:
+2. Run `scripts/resize.sh` (macOS) to generate `assets/img/` and `assets/thumbs/`.
+3. Add a line to the `albums` list in `assets/site.js`:
    `{ id: '2024-queretaro', label: "Queretaro '24", count: 10 },`
 
 Link straight to an album with `index.html#2024-queretaro`.
