@@ -34,4 +34,12 @@ Open the `index.html` file in your web browser to view and use the photo gallery
 - Click on a photo to view it in the carousel.
 
 ### Organizing Photos
-- Create albums to organize your photos by grouping pictures with the data-gallery HTML tag.
+Each album is a folder named `<year>-<place>` (e.g. `2024-queretaro`). To add one:
+
+1. Put the photos in `originals/<year>-<place>/`, named `01.jpg`, `02.jpg`, ...
+   (`originals/` is not committed).
+2. Run `./resize.sh` (macOS) to generate the lightbox images in `img/` and the grid thumbnails in `thumbs/`.
+3. Add a line to the `trips` list in `index.html`:
+   `{ id: '2024-queretaro', label: "Queretaro '24", count: 10 },`
+
+Link straight to an album with `index.html#2024-queretaro`.

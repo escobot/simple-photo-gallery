@@ -60,6 +60,7 @@
             width: 80%;
             display: flex;
             flex-wrap: wrap;
+            align-content: flex-start; /* don't stretch rows to fill the height */
             padding: 20px;
             gap: 10px;
             background: #fff;
@@ -74,6 +75,8 @@
         .content img {
             width: 100%;
             height: auto;
+            aspect-ratio: 4 / 3; /* uniform grid; the lightbox shows the full photo */
+            object-fit: cover;
             display: block;
             border-radius: 5px;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -131,151 +134,85 @@
             <h1>pbgnz</h1>
             <p>Backup of <a href="https://imgur.com/user/pbgnz">imgur.com/user/pbgnz</a></p>
             <h2>Adventure log</h2>
-            <ul>
-                <li><a onclick="showGallery('trip010')">Beauharnois Bikepacking '24</a></li>
-                <li><a onclick="showGallery('trip009')">Queretaro '24</a></li>
-                <li><a onclick="showGallery('trip008')">Osaka '23</a></li>
-                <li><a onclick="showGallery('trip007')">Kyoto '23</a></li>
-                <li><a onclick="showGallery('trip006')">Hong Kong '23</a></li>
-                <li><a onclick="showGallery('trip005')">Maui '23</a></li>
-                <li><a onclick="showGallery('trip004')">Prague '22</a></li>
-                <li><a onclick="showGallery('trip003')">Venice '22</a></li>
-                <li><a onclick="showGallery('trip002')">Yucatan '22</a></li>
-                <li><a onclick="showGallery('trip001')">Vancouver '21</a></li>
-                <li><a onclick="showGallery('trip000')">Toronto Islands '20</a></li>
-            </ul>
+            <ul id="trip-list"></ul>
         </div>
-        <div class="content">
-
-            <a href="img/2401/01.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="thumbs/2401/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2401/02.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="thumbs/2401/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2401/03.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="thumbs/2401/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2401/04.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="thumbs/2401/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2401/05.jpg" data-fancybox="gallery" data-gallery="trip010"><img src="thumbs/2401/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2400/01.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/02.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/03.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/04.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/05.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/06.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/07.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/08.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/09.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2400/10.jpg" data-fancybox="gallery" data-gallery="trip009"><img src="thumbs/2400/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2304/01.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="thumbs/2304/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2304/02.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="thumbs/2304/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2304/03.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="thumbs/2304/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2304/04.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="thumbs/2304/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2304/05.jpg" data-fancybox="gallery" data-gallery="trip008"><img src="thumbs/2304/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2303/01.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/02.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/03.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/04.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/05.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/06.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/07.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/08.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/09.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2303/10.jpg" data-fancybox="gallery" data-gallery="trip007"><img src="thumbs/2303/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2301/01.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/02.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/03.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/04.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/05.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/06.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/07.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/08.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/09.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2301/10.jpg" data-fancybox="gallery" data-gallery="trip006"><img src="thumbs/2301/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2300/01.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/02.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/03.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/04.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/05.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/06.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/07.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/08.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/09.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2300/10.jpg" data-fancybox="gallery" data-gallery="trip005"><img src="thumbs/2300/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2202/01.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/02.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/03.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/04.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/05.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/06.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/07.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/08.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/09.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2202/10.jpg" data-fancybox="gallery" data-gallery="trip004"><img src="thumbs/2202/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2201/01.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/02.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/03.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/04.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/05.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/06.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/07.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/08.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/09.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2201/10.jpg" data-fancybox="gallery" data-gallery="trip003"><img src="thumbs/2201/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2200/01.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="thumbs/2200/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2200/02.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="thumbs/2200/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2200/03.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="thumbs/2200/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2200/04.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="thumbs/2200/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2200/05.jpg" data-fancybox="gallery" data-gallery="trip002"><img src="thumbs/2200/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2100/01.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/02.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/03.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/04.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/05.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/06.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/07.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/08.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/09.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2100/10.jpg" data-fancybox="gallery" data-gallery="trip001"><img src="thumbs/2100/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-            <a href="img/2000/01.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/01.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/02.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/02.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/03.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/03.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/04.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/04.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/05.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/05.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/06.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/06.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/07.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/07.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/08.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/08.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/09.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/09.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-            <a href="img/2000/10.jpg" data-fancybox="gallery" data-gallery="trip000"><img src="thumbs/2000/10.jpg" loading="lazy" decoding="async" width="800" height="600" alt=""></a>
-
-        </div>
+        <div class="content" id="gallery"></div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('[data-fancybox="gallery"]').fancybox({
-                // Options for Fancybox
-            });
-        });
+        // One entry per trip, newest first. `id` is the folder name in
+        // originals/, img/ and thumbs/; photos are named 01.jpg, 02.jpg, ...
+        // To add a trip: put photos in originals/<id>/, run ./resize.sh, add a line here.
+        const trips = [
+            { id: '2024-panama', label: "Panama '24", count: 5 },
+            { id: '2024-new-york', label: "New York '24", count: 5 },
+            { id: '2024-beauharnois-bikepacking', label: "Beauharnois Bikepacking '24", count: 5 },
+            { id: '2024-queretaro', label: "Queretaro '24", count: 10 },
+            { id: '2023-osaka', label: "Osaka '23", count: 5 },
+            { id: '2023-kyoto', label: "Kyoto '23", count: 10 },
+            { id: '2023-hong-kong', label: "Hong Kong '23", count: 10 },
+            { id: '2023-maui', label: "Maui '23", count: 10 },
+            { id: '2022-prague', label: "Prague '22", count: 10 },
+            { id: '2022-venice', label: "Venice '22", count: 10 },
+            { id: '2022-yucatan', label: "Yucatan '22", count: 5 },
+            { id: '2021-vancouver', label: "Vancouver '21", count: 10 },
+            { id: '2020-toronto-islands', label: "Toronto Islands '20", count: 10 },
+        ];
 
-        function showGallery(gallery) {
-            $('.content a').hide();
-            $('.content a[data-gallery="' + gallery + '"]').show();
-            if (window.innerWidth <= 768) {
-                toggleSidebar();
+        // The URL hash selects a trip (below), so Fancybox must not also read it.
+        $.fancybox.defaults.hash = false;
+
+        const list = document.getElementById('trip-list');
+        const gallery = document.getElementById('gallery');
+
+        for (const trip of trips) {
+            const item = document.createElement('li');
+            const link = document.createElement('a');
+            link.href = '#' + trip.id;
+            link.textContent = trip.label;
+            item.appendChild(link);
+            list.appendChild(item);
+
+            for (let i = 1; i <= trip.count; i++) {
+                const file = trip.id + '/' + String(i).padStart(2, '0') + '.jpg';
+                const a = document.createElement('a');
+                a.href = 'img/' + file;
+                a.dataset.fancybox = trip.id; // lightbox arrows stay within one trip
+                a.dataset.gallery = trip.id;
+                const img = document.createElement('img');
+                img.src = 'thumbs/' + file;
+                img.loading = 'lazy';
+                img.decoding = 'async';
+                img.width = 800;  // placeholder ratio until the image loads
+                img.height = 600;
+                img.alt = trip.label + ' photo ' + i;
+                a.appendChild(img);
+                gallery.appendChild(a);
             }
         }
 
+        function showGallery(id) {
+            for (const a of gallery.children) {
+                a.style.display = a.dataset.gallery === id ? '' : 'none';
+            }
+        }
+
+        // The URL hash selects a trip, so links like index.html#2024-queretaro work.
+        function showFromHash() {
+            const id = decodeURIComponent(location.hash.slice(1));
+            if (trips.some(t => t.id === id)) showGallery(id);
+        }
+        window.addEventListener('hashchange', showFromHash);
+        showFromHash();
+
+        list.addEventListener('click', e => {
+            if (e.target.closest('a') && window.innerWidth <= 768) toggleSidebar();
+        });
+
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('show');
+            document.getElementById('sidebar').classList.toggle('show');
         }
     </script>
 </body>
